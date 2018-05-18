@@ -87,3 +87,7 @@ nav {
 .SubmitArticle .display-5 {
     font-size: 2.8rem;
 }
+
+.SubmitArticle .black-label{
+    color: black;
+}
