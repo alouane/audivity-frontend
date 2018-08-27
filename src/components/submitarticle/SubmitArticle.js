@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import CFooter from '../cfooter/CFooter';
 import "./SubmitArticle.css";
-import Typist from 'react-typist';
 import UrlForm from './UrlForm'
 import axios from 'axios';
 import {Redirect} from "react-router-dom";
@@ -23,8 +21,10 @@ class SubmitArticle extends Component {
         // print the form values to the console
         console.log(values);
         var that = this;
-        //Send rest request	
-        axios.post('https://api.audivity.com/user/url', {
+        // Send rest request	
+        // Changed https to http. Form was throwing network error
+        //axios request is handled in the php code
+        axios.post('http://api.audivity.com/user/url', {
             url: values.url,
             gender: values.gender,
             age: values.age,
@@ -114,7 +114,6 @@ class SubmitArticle extends Component {
                     </div>
                 </section>}
 
-                <CFooter />
             </main>
         );
     }

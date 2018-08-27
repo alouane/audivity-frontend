@@ -18,7 +18,8 @@ class UploadAudio extends Component {
 
         console.log(this.props.match.params.ReqID);
         // Get related ReqUrl
-        axios.get('https://api.audivity.com/user/get?rkey=' + that.props.match.params.ReqID)
+        //this request is sent to the php server
+        axios.get('http://api.audivity.com/user/get?rkey=' + that.props.match.params.ReqID)
             .then(function (response) {
                 //success response
                 that.ReqUrl = response.data.ReqUrl;
@@ -51,16 +52,17 @@ class UploadAudio extends Component {
         //Get freelancer's name, audio title & audio description
         let name = document.getElementById('freelancer-name').value;
         // let title = document.getElementById('audio-title').value;
-        let description = document.getElementById('audio-description').value;
+        // let description = document.getElementById('audio-description').value;
 
-        //Apend params
+        //Append params
         data.append("key", this.props.match.params.ReqID);
         data.append("name", name);
         // data.append("title", title);
-        data.append("description", description);
+        // data.append("description", description);
 
-        // Send registre rest request	
-        axios.post('https://api.audivity.com/audio/upload', data, config)
+        // Send registre rest request
+        //axios request is handled in the php code	
+        axios.post('http://api.audivity.com/audio/upload', data, config)
             .then(function (response) {
                 console.log(response);
                 //Request success
@@ -82,11 +84,9 @@ class UploadAudio extends Component {
                     <div className="container">
                         <div className="mt-5 card w-580 mx-auto p-5">
                             <header className="text-center">
-
-
                                 {uploaded ? <h1><i className="ion-checkmark-circled"> </i> &nbsp; Upload success! </h1> : <h1><i className="ion-upload"> </i> &nbsp;Upload your Audition</h1>}
 
-                                {uploaded ? <p> You voice over sample is on its way, you’ll receive an email as soon as  <b>{this.ReqUrl.company_name}</b> reviews it! </p> : null}
+                                {uploaded ? <p className="text-center"> Thank you! We will contact you if we wish to proceed. </p> : null}
                                 {this.ReqUrl && !uploaded ? <p>Your goal is to convey this <a href={this.ReqUrl.url}target="_blank">specific article</a> in an engaging and informative way. Podcasting is an art so take it from here and feel free to find your own pace, tone. Do change article structure as you see fit so listeners digest the message and come back for more</p> : null}
 
                             </header>
@@ -102,13 +102,13 @@ class UploadAudio extends Component {
                                 {/* <div className="form-group mb-5 mt-4">
                                     <label htmlFor="nameInput">Audio title</label>
                                     <input type="text" className="form-control border-top-0 border-left-0 border-right-0" id="audio-title" placeholder="Jon Dough Podcast" />
-                                </div> */}
+                                </div>
 
                                 {/* Audio Description */}
-                                <div className="form-group mb-5 mt-4">
+                                {/* <div className="form-group mb-5 mt-4">
                                     <label htmlFor="nameInput">Audio Description</label>
                                     <textarea type="text" className="form-control border-top-0 border-left-0 border-right-0" id="audio-description" placeholder="VAPOR PRESSURE DEFICIT"></textarea>
-                                </div>
+                                </div> */}
 
                                 <input id="audio-uploader" type="file" name="file" />
                                 <div className="info">Choose file (mp3 only) </div>
@@ -117,8 +117,6 @@ class UploadAudio extends Component {
 
                             </section>:null
                             }
-
-
                         </div>
                     </div>
                 </div>

@@ -33,7 +33,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
 
 const textareaField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div>
-    <textarea rows="3" placeholder="Hello, Audivity!" className="form-control border-top-0 border-left-0 border-right-0" ></textarea>
+    <textarea {...input} rows="3" placeholder="Hello, Audivity!" className="form-control border-top-0 border-left-0 border-right-0" ></textarea>
     <div className="error">{touched && ((error && <div className="label"><i className="ion-alert"> </i> &nbsp; {error}</div>) || (warning && <div>{warning}</div>))}
   </div></div>
 

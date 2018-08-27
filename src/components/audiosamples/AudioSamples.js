@@ -25,6 +25,7 @@ class AudioSamples extends Component {
 
         console.log(this.props.match.params.usrID);
         // Get related audio players
+        //axios request is handled in the php code
         axios.get('https://api.audivity.com/audio/sample_audios?rkey=' + that.props.match.params.usrID)
             .then(function (response) {
                 //success response
@@ -42,7 +43,8 @@ class AudioSamples extends Component {
     save_prefered_audio = () => {
         var that = this;
         if (that.state.selected_audio) {
-            //Send registre rest request	
+            //Send registre rest request
+            //axios request is handled in the php code	
             axios.get('https://api.audivity.com/audio/preferd_audio_sample', {
                 params: {
                     rkey: that.props.match.params.usrID,
@@ -66,6 +68,7 @@ class AudioSamples extends Component {
         console.log(value);
         // that.setState({ feedback_submited: true})
         //Send registre rest request	
+        //axios request is handled in the php code
         axios.post('https://api.audivity.com/audio/dissatisfaction', {
             rkey: that.props.match.params.usrID,
             goal: value.goal,
@@ -86,6 +89,7 @@ class AudioSamples extends Component {
         var that = this;
         // that.setState({ feedback_submited: true})
         //Send registre rest request	
+        //axios request is handled in the php code
         axios.get('https://api.audivity.com/audio/join', {
             params: {
                 rkey: that.props.match.params.usrID
@@ -147,20 +151,20 @@ class AudioSamples extends Component {
                                 {/* After audio review message */}
                                 {loaded && !not_interested && !feedback_submited? <h1><i className="ion-happy-outline"> </i> &nbsp; We’re glad you’ve enjoyed a sneakpeak of what Audivity can do!</h1> : null}
                                 {/* User not interested message */}
-                                {not_interested && !feedback_submited? <h1><i className="ion-sad-outline"> </i> &nbsp; It's sad to see you not interested. Is growing your audience for company is not your thing?  </h1> : null}
+                                {not_interested && !feedback_submited? <h1><i className="ion-sad-outline"> </i> &nbsp; It's sad to see you're not interested. Is growing your audience for your company not your thing?  </h1> : null}
                                 {/* Feedback submited */}
                                 {feedback_submited ? <h1><i className="ion-happy-outline"> </i> &nbsp; Thanks for sharing your feedback.</h1> : null}
 
 
-                                {player_loaded && !loaded ? <p>Please preview all the samples and tell us which ones you like.</p> : null}
-                                {loaded && !not_interested && !feedback_submited? <p><b>Sign Up</b> to join our exclusive partner program and learn how we can convert your blogs into polished and published digital audio to you more traffic, revenue, and loyal listeners. No contracts, No hidden costs. No need for audio recording, editing or publishing just sit back and enjoy. </p> : null}
+                                {player_loaded && !loaded ? <p>Please preview all the samples and tell us which one you like.</p> : null}
+                                {loaded && !not_interested && !feedback_submited? <p><b>Sign Up</b> to join our exclusive partner program and learn how we can convert your blogs into polished digital audio to get you more traffic, revenue, and loyal listeners. No contracts. No hidden costs. No need for audio recording, editing or publishing. Just sit back and enjoy. </p> : null}
                                 {not_interested && !feedback_submited? <p>What would you want instead?</p> : null}
                                 {feedback_submited? <p>Audivity team will contact you very soon. </p> : null}
 
                             </header>
                             {loaded && !not_interested && !feedback_submited? <section>
                                 <center>
-                                    <button className="mt-3 mr-5 btn btn-primary text-uppercase px-3 pt-2" onClick={this.Join} ><i className="ion-android-person-add"> </i> &nbsp; Become Partner </button>
+                                    <button className="mt-3 mr-5 btn btn-primary text-uppercase px-3 pt-2" onClick={this.Join} ><i className="ion-android-person-add"> </i> &nbsp; Become A Partner </button>
                                     <button className="mt-3 btn btn-primary text-uppercase px-3 pt-2" onClick={this.NotIntersted}><i className="ion-android-cancel" > </i> &nbsp; No Thanks </button>
                                 </center>
                             </section> : null}

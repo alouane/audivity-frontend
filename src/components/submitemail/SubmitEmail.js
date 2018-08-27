@@ -8,15 +8,17 @@ class SubmitEmail extends Component {
 
     state = {
         success: false
-      }
+    }
 
     submit = values => {
         // print the form values to the console
         console.log(values);
         var that = this;
 
-        //Send registre rest request	
-        axios.post('https://api.audivity.com/user/register_profile', {
+        //Send register rest request
+        // Changed to http from https. Threw network error
+        //axios request is handled in the php code
+        axios.post('http://api.audivity.com/user/register_profile', {
             key: this.props.match.params.ReqID,
             email: values.email,
             name: values.name,
@@ -24,14 +26,12 @@ class SubmitEmail extends Component {
         })
             .then(function (response) {
                 console.log(response);
-                //Request success
+                //Request success                    
                 that.setState({ success: true })
-
             })
             .catch(function (error) {
                 console.log(error);
             });
-
     }
 
     render() {
@@ -45,9 +45,9 @@ class SubmitEmail extends Component {
                         <header className="text-center">
                         
                             
-                            {success ? <h1><i className="ion-checkmark-circled"> </i> &nbsp; Operation success! </h1>:<h1><i className="ion-clock"> </i> &nbsp;We are working on creating fresh samples for you!</h1>}
+                            {success ? <h1 className='mb-4'><i className="ion-checkmark-circled"> </i> &nbsp; Operation success! </h1>:<h1><i className="ion-clock"> </i> &nbsp;We're getting started on your fresh auditions!</h1>}
 
-                            {success ? <p> You free voice over sample are on its way, you’ll receive an email as soon as they are ready! </p>:<p>Submit your email address and name to receive your free samples</p>}
+                            {success ? <p> You free voice over sample are on its way, you’ll receive an email as soon as they are ready! </p>:<p>Your blog has a message. We turn this message into a story worth sharing! Let’s get to know each other so we can customize your experience and let you know as soon your new story is ready. </p>}
                             
                         </header>
                         <section>

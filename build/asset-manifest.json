@@ -1,13 +1,9 @@
 {
-  "main.css": "static/css/main.c7a3f9e1.css",
-  "main.css.map": "static/css/main.c7a3f9e1.css.map",
-  "main.js": "static/js/main.c332b29b.js",
-  "main.js.map": "static/js/main.c332b29b.js.map",
-  "static\\media\\contact-bg.svg": "static/media/contact-bg.750cac84.svg",
+  "main.css": "static/css/main.b5ff625b.css",
+  "main.css.map": "static/css/main.b5ff625b.css.map",
+  "main.js": "static/js/main.a2ac3ded.js",
+  "main.js.map": "static/js/main.a2ac3ded.js.map",
+  "static\\media\\contact-bg.svg": "static/media/contact-bg.4ffc01a2.svg",
   "static\\media\\desktop.jpg": "static/media/desktop.fd45b5f0.jpg",
-  "static\\media\\ionicons.eot?v=2.0.0": "static/media/ionicons.2c2ae068.eot",
-  "static\\media\\ionicons.svg?v=2.0.0": "static/media/ionicons.621bd386.svg",
-  "static\\media\\ionicons.ttf?v=2.0.0": "static/media/ionicons.24712f6c.ttf",
-  "static\\media\\ionicons.woff?v=2.0.0": "static/media/ionicons.05acfdb5.woff",
-  "static\\media\\login-bg.svg": "static/media/login-bg.8cadf75c.svg"
+  "static\\media\\login-bg.svg": "static/media/login-bg.e11899c9.svg"
 }

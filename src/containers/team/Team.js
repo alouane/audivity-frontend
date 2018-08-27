@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import "./Team.css";
 import { connect } from 'react-redux';
-import CFooter from '../../components/cfooter/CFooter';
 
 
 class Team extends Component {
@@ -28,7 +27,7 @@ class Team extends Component {
             <main className="team">
                 <header className="jumbotron text-center mb-0">
                     <h1 className="display-4 text-white text-shadow mb-4">From Creators to Creators</h1>
-                    <p className="lead text-white text-shadow w-720 mx-auto">Our team is set out to build new tools to give human voice to written content. We take care of the hard and techy stuff letting the creatives focus on content. We voice your stories and bring new ears.</p>
+                    <p className="lead text-white text-shadow w-720 mx-auto">Our team has set out to build new tools to give human voice to written content. We take care of the hard stuff and let the creatives focus on content. We voice your stories and bring new ears.</p>
                 </header>
 
 
@@ -38,7 +37,7 @@ class Team extends Component {
 
                         <header className="text-center w-720 mx-auto pt-4">
                             <h2 className="mb-4">We are a company of passionate audio listeners.</h2>
-                            <p className="team-p mb-5">We know that good things come to those who listen. Good stories and awesome content deserves voice.  We believe that you should have a choice whether to read or to listen to your favorite content.</p>
+                            <p className="team-p mb-5">We know that good things come to those who listen. Good stories and awesome content deserve a voice. We believe that you should have a choice to read or to listen to your favorite content.</p>
                         </header>
 
                         {
@@ -53,7 +52,7 @@ class Team extends Component {
                         <div className="w-720 mx-auto py-5">
                             <h1 className="text-primary future-h1">The future starts today.</h1>
                             <p className="mt-4 future-p mb-0">
-                                Today we automate conversion of written content into digital audio. Tomorrow we are leveraging AI voice reconstruction to make things simpler. The day after we automate video production.
+                                Today we automate conversion of written content into digital audio. Tomorrow we leverage AI voice reconstruction to make things simpler. The day after we automate video production.
                             </p>
                         </div>
                     </div>
@@ -72,7 +71,7 @@ class Team extends Component {
                                         </div>
                                     </div>
                                     <div className="px-4 py-3">
-                                        <p className="team-p mb-0">We build Audivity on question using the Ask method.</p>
+                                        <p className="team-p mb-0">We build Audivity on questions using the Ask method.</p>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +84,7 @@ class Team extends Component {
                                         </div>
                                     </div>
                                     <div className="px-4 py-3">
-                                        <p className="team-p mb-0">We put consumer experience at the core of what we do. We introducing big change in content creation because we believe in Change by Design</p>
+                                        <p className="team-p mb-0">We put consumer experience at the core of what we do. We are introducing big change in content creation because we believe in Change by Design</p>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +97,7 @@ class Team extends Component {
                                         </div>
                                     </div>
                                     <div className="px-4 py-3">
-                                        <p className="team-p mb-0">We don’t overwhelm with features, we simplify using lean startup methodology</p>
+                                        <p className="team-p mb-0">We don’t overwhelm users with features, we simplify using lean startup methodology</p>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +124,6 @@ class Team extends Component {
                     </div>
                 </section>
 
-                <CFooter />
             </main>
         );
     }

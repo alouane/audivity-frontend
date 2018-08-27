@@ -1,43 +1,45 @@
-import React, { createElement } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import registerServiceWorker from './registerServiceWorker';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import '../node_modules/bootstrap/dist/css/bootstrap-theme.min.css';
 import './index.css';
-import './assets/ionicons.css';
+// import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+// import Login from './components/Login';
+// import Register from './components/Register';
 
-// Components
-import Contact from './components/contact/Contact';
-import Homepage from './components/homepage/Homepage';
-import SubmitArticle from './components/submitarticle/SubmitArticle';
-import SubmitEmail from './components/submitemail/SubmitEmail';
-import UploadAudio from './components/uploadaudio/UploadAudio';
-import AudioSamples from './components/audiosamples/AudioSamples';
-import Login from './components/login/Login';
-import Navbar from './components/navbar/Navbar';
-import Signup from './components/signup/Signup';
-import Team from './containers/team/Team';
+import Navbar from './components/navbar/Navbar'
+import Contact from './components/contact/Contact'
+import SubmitScript from './components/submitscript/SubmitScript'
+import Login from './components/login/Login'
+import Signup from './components/signup/Signup'
+import Team from './containers/team/Team'
+import SubmitArticle from './components/submitarticle/SubmitArticle'
+import SubmitEmail from './components/submitemail/SubmitEmail'
+import UploadAudio from './components/uploadaudio/UploadAudio'
+import AudioSamples from './components/audiosamples/AudioSamples'
+import CFooter from './components/cfooter/CFooter'
 
 // Reducers
 import reducers from './reducers';
 
-
-
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-
-
-
-
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)} >
-        <BrowserRouter>
+    <Provider store={createStoreWithMiddleware(reducers)}>
+        <Router>
             <div>
-                <Navbar />
+                {/* <Route exact path='/' component={App} />
+                <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} /> */}
+                <Navbar/>
                 <Switch>
                     <Route path="/contact" component={Contact}/>
+                    <Route path="/submitScript" component={SubmitScript}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/signup" component={Signup}/>
                     <Route path="/team" component={Team}/>
@@ -47,10 +49,10 @@ ReactDOM.render(
                     <Route path="/audioSamples/:usrID" component={AudioSamples}/>
                     <Route path="/" component={SubmitArticle}/>
                 </Switch>
+                <CFooter/>
             </div>
-        </BrowserRouter>
-    </Provider>, 
-    document.getElementById('root')
+        </Router>
+    </Provider>,
+  document.getElementById('root')
 );
-
 registerServiceWorker();

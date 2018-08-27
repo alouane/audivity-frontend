@@ -9,6 +9,10 @@ nav .brand-name, nav .brand-caption {
     font-family: "Montserrat", "sans-serif";
 }
 
+.navbar-collapse{
+    text-align: center;
+}
+
 .nav-link {
     font-size: 13px;
     font-weight: 300;
@@ -22,4 +26,8 @@ nav .brand-caption {
 
 nav {
     transition: all 0.5s ease;
+}
+
+.login-btn:hover{
+    color: black !important;
 }

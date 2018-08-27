@@ -6,6 +6,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    border-radius: 0;
 }
 .SubmitArticle label{
     color: white;

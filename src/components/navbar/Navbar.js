@@ -4,6 +4,13 @@ import "./Navbar.css";
 import $ from 'jquery';
 
 class Navbar extends Component {
+
+    logout = () => {
+        //removes jwt Token from local storage on logout
+        localStorage.removeItem('jwtToken');
+        window.location.reload();
+    }
+
     render() {
 
         $(window).scroll(function () {
@@ -41,15 +48,25 @@ class Navbar extends Component {
                             <li className="nav-item mx-0">
                                 <a className="nav-link text-shadow text-white" href="https://angel.co/audivity/jobs" target="_blank">Jobs</a>
                             </li>
-                            <li className="nav-item mx-3">
+                            <li className="nav-item mx-0">
                                 <Link className="nav-link text-shadow text-white" to="/contact">Contact</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link btn btn-secondary px-3 text-white" to="/login">Log In</Link>
-                            </li>
-                            {/* <li className="nav-item">
-                                    <Link className="nav-link btn btn-primary px-3 text-white" to="/signup">Sign Up</Link>
-                                </li> */}
+                            {!localStorage.getItem('jwtToken') ? (
+                                <span className="d-inherit">
+                                    <li className="nav-item mx-0">
+                                    <Link className="nav-link  text-shadow text-white" to="/login">Log In</Link>
+                                    </li>
+                                    <li className="nav-item mx-3">
+                                        <Link className="nav-link btn btn-secondary px-3 text-white signup-btn" to="/signup">Sign Up</Link>
+                                    </li>
+                                </span>
+                            ) : (
+                                <span className="d-inherit">
+                                    <li className="nav-item mx-3" onClick={this.logout}>
+                                        <Link className="nav-link btn btn-secondary px-3 text-white signup-btn" to="/signup">Log Out</Link>
+                                    </li>
+                                </span>
+                            )}
                         </ul>
                     </div>
                 </div>
