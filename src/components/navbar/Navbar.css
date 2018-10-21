@@ -1,7 +1,22 @@
+.fixed-top{
+    background-color: rgb(8, 53, 51);
+    padding: 9px 0px;
+}
+.fixed-top a{
+    font-family: avenirNext;
+    font-weight: bold;
+    padding-right: 1.5em !important;
+    padding-left: 1.5em !important;
+    font-size: 0.9em;
+}
+.login-btn{
+    border: 2px solid white;
+    border-radius: 17px;
+}
 nav img {
     position: relative;
     top: -2px;
-    height: 30px;
+    height: 48px;
 }
 
 nav .brand-name, nav .brand-caption {
@@ -17,7 +32,7 @@ nav .brand-name, nav .brand-caption {
     font-size: 13px;
     font-weight: 300;
     letter-spacing: 0.15ch;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 nav .brand-caption {

@@ -2,19 +2,25 @@ import React, { Component } from 'react';
 import "./SubmitArticle.css";
 import UrlForm from './UrlForm'
 import axios from 'axios';
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class SubmitArticle extends Component {
-     
+
     state = {
         redirect: false,
+        step: 'step1',
         url: '/submitEmail/'
-      }
+    }
 
     constructor(props) {
         super(props);
         this.url = null;
         this.requestID = null;
+    }
+
+    changeStep = (step) => {
+        console.log("STEP CALLED", step);
+        this.setState({ step: step })
     }
 
     submit = values => {
@@ -49,26 +55,41 @@ class SubmitArticle extends Component {
     render() {
         const { redirect } = this.state;
         if (redirect) {
-            return <Redirect to={this.state.url}/>;
-          }
+            return <Redirect to={this.state.url} />;
+        }
 
         return (
             <main className="SubmitArticle">
-                <section className="jumbotron mb-0 bg-light">
+                <div className="stepper-container">
+                    <div className="lbl">HEAD</div>
+                    <div className="lbl">FOOTER</div>
+                    <div className={this.state.step}>
+                        <ul className="stepper">
+                            <li><span>Picking article url...</span></li>
+                            <li><span>Picking voice actor...</span></li>
+                            <li><span>Picking industry...</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <section className="jumbotron mb-0">
                     <div className="container py-5">
-                        <h1 className="display-5 text-shadow text-white mb-0">Hi, welcome to Audivity!</h1>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <h1 className="display-5 mb-0">Hi, Welcome to <br />Audivity! <span>beta</span></h1>
 
-                        <h1 className="my-3 text-shadow text-white" id="typed">
+                        <h2 className="my-3" id="typed">
                             <div className="display-4">Submit a URL of your blog to receive professionally narrated samples free </div>
-                        </h1>
+                        </h2>
 
                         <div className="h-100 mt-4">
-                            <UrlForm onSubmit={this.submit} /></div>
+                            <UrlForm onSubmit={this.submit} changeStep={this.changeStep} /></div>
                     </div>
                 </section>
 
 
-                {<section className="bg-light pb-4">
+                {/* {<section className="bg-light pb-4">
                     <div className="container py-5">
 
 
@@ -112,7 +133,7 @@ class SubmitArticle extends Component {
 
 
                     </div>
-                </section>}
+                </section>} */}
 
             </main>
         );

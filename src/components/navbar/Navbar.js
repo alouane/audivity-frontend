@@ -15,14 +15,13 @@ class Navbar extends Component {
 
         $(window).scroll(function () {
             var scrollLocation = $(window).scrollTop();
-
-            if (scrollLocation <= 30) {
-                $('nav').css('background-color', 'rgba(0, 0, 0, 0)');
-                $('nav').css('box-shadow', 'none');
-            } else if (scrollLocation > 30) {
-                $('nav').css('background-color', '#2c2c2d');
-                $('nav').css('box-shadow', '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)');
-            }
+            // if (scrollLocation <= 30) {
+            //     $('nav').css('background-color', 'rgba(0, 0, 0, 0)');
+            //     $('nav').css('box-shadow', 'none');
+            // } else if (scrollLocation > 30) {
+            //     $('nav').css('background-color', '#2c2c2d');
+            //     $('nav').css('box-shadow', '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)');
+            // }
         });
 
         return (
@@ -30,8 +29,8 @@ class Navbar extends Component {
                 <div className="container"> 
                     <Link className="navbar-brand" to="/">
                         <img src="https://ucarecdn.com/15478a2f-f7eb-4a22-ad4e-9a381751a612/" alt="Logo" className="mr-2" />
-                        <span className="brand-name text-shadow text-white">AUDIVITY</span>
-                        <span className="brand-caption beta pl-2 text-shadow text-white">(beta)</span>
+                        {/* <span className="brand-name text-shadow text-white">AUDIVITY</span> */}
+                        {/* <span className="brand-caption beta pl-2 text-shadow text-white">(beta)</span> */}
                     </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -54,11 +53,11 @@ class Navbar extends Component {
                             {!localStorage.getItem('jwtToken') ? (
                                 <span className="d-inherit">
                                     <li className="nav-item mx-0">
-                                    <Link className="nav-link  text-shadow text-white" to="/login">Log In</Link>
+                                    <Link className="nav-link  text-shadow text-white login-btn" to="/login">Login</Link>
                                     </li>
-                                    <li className="nav-item mx-3">
+                                    {/* <li className="nav-item mx-3">
                                         <Link className="nav-link btn btn-secondary px-3 text-white signup-btn" to="/signup">Sign Up</Link>
-                                    </li>
+                                    </li> */}
                                 </span>
                             ) : (
                                 <span className="d-inherit">
