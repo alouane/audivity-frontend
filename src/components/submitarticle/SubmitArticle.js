@@ -8,6 +8,7 @@ class SubmitArticle extends Component {
 
     state = {
         redirect: false,
+        sent: false,
         step: 'step1',
         url: '/submitEmail/'
     }
@@ -27,28 +28,29 @@ class SubmitArticle extends Component {
         // print the form values to the console
         console.log(values);
         var that = this;
+        that.setState({ sent: true })
         // Send rest request	
         // Changed https to http. Form was throwing network error
         //axios request is handled in the php code
-        axios.post('http://api.audivity.com/user/url', {
-            url: values.url,
-            gender: values.gender,
-            age: values.age,
-            industry: values.industry
-        })
-            .then(function (response) {
-                console.log(response);
-                //save ReqID
-                that.requestID = response.data.key;
-                //redirect to send_email view
-                that.state.url += that.requestID
-                that.setState({ redirect: true })
+        // axios.post('http://api2.audivity.com/user/url', {
+        //     url: values.url,
+        //     gender: values.gender,
+        //     age: values.age,
+        //     industry: values.industry
+        // })
+        //     .then(function (response) {
+        //         console.log(response);
+        //         //save ReqID
+        //         that.requestID = response.data.key;
+        //         //redirect to send_email view
+        //         that.state.url += that.requestID
+        //         that.setState({ redirect: true })
 
 
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
 
     }
 
@@ -67,7 +69,7 @@ class SubmitArticle extends Component {
                         <ul className="stepper">
                             <li><span>Picking article url...</span></li>
                             <li><span>Picking voice actor...</span></li>
-                            <li><span>Picking industry...</span></li>
+                            <li><span>Picking email...</span></li>
                         </ul>
                     </div>
                 </div>
@@ -77,14 +79,20 @@ class SubmitArticle extends Component {
                         <br />
                         <br />
                         <br />
-                        <h1 className="display-5 mb-0">Hi, Welcome to <br />Audivity! <span>beta</span></h1>
+                        {this.state.sent ? <h1 className="display-5 mb-0 success"><i class="ion-clock"> </i> Thanks for your submission  <span>We're getting started on your fresh auditions!</span></h1> : null}
 
-                        <h2 className="my-3" id="typed">
-                            <div className="display-4">Submit a URL of your blog to receive professionally narrated samples free </div>
-                        </h2>
+                        {!this.state.sent ? <div>
+                            <h1 className="display-5 mb-0">Hi, Welcome to <br />Audivity! <span>beta</span></h1>
 
-                        <div className="h-100 mt-4">
-                            <UrlForm onSubmit={this.submit} changeStep={this.changeStep} /></div>
+                            <h2 className="my-3" id="typed">
+                                <div className="display-4">Submit a URL of your blog to receive professionally narrated samples free </div>
+                            </h2>
+
+                            <div className="h-100 mt-4">
+                                <UrlForm onSubmit={this.submit} changeStep={this.changeStep} />
+                            </div>
+                        </div>: null}
+
                     </div>
                 </section>
 

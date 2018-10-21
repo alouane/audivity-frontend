@@ -9,13 +9,16 @@ const validate = (values, props) => {
   if (!values.url) {
     errors.url = 'URL Required'
   }
+  if (!values.email) {
+    errors.email = 'Email Required'
+  }
 
   // if(values.url && values.age && values.gender && values.industry) props.changeStep('step3');
-  else if(values.url && values.age && values.gender) props.changeStep('step3');
-  else if(values.url && values.age) props.changeStep('step2');
+  if(values.url && values.email) props.changeStep('step3');
+  else if(values.url && values.age || values.url && values.gender) props.changeStep('step2');
   else if (values.url) props.changeStep('step1');
   
-
+ 
   //  else if (!/(\d{4})([\/-])(\d{1,2})\2(\d{1,2})/.test(values.url)) {
   //   errors.url = 'Hmm, doesn’t look like you’ve submitted a link to a specific blog posts. Try again.'
   // }
@@ -99,6 +102,19 @@ let UrlForm = (props) => {
       <div className="form-group mr-1 input-container url desc">
         <Field component={renderField} type="text" label="(e.g., Computer science, Music,...)" name="industry" />
       </div>
+
+      {/* personal infos */}
+      <div className="form-group mr-1 input-container url">
+      <div className="input-label">Your email adress:</div>
+        <Field component={renderField} type="text" label="jon@dough.com" name="email"/>
+      </div>
+
+      <div className="form-group mr-1 input-container url">
+      <div className="input-label">Your company:</div>
+        <Field component={renderField} type="text" label="TheGuardian" name="company"/>
+      </div>
+
+
 
       <button className="btn btn-primary px-4 pt-2">Submit &nbsp;<i className="ion-android-arrow-forward"> </i></button>
     </form>

@@ -16,6 +16,9 @@
     margin-right: auto;
     margin-left: auto;
 }
+.SubmitArticle .is-danger{
+    color: red;    
+}
 .SubmitArticle .stepper-container .lbl{
     color: white
 }
@@ -43,6 +46,14 @@
     -o-background-size: cover;
     background-size: cover;
     border-radius: 0; */
+}
+.SubmitArticle .success{
+    text-align: center;
+    /* height: -webkit-fill-available; */
+}
+.SubmitArticle .success span{
+    color: #083533;
+    font-weight: lighter;
 }
 .SubmitArticle h1 span{
     color: black;
