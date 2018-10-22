@@ -28,29 +28,29 @@ class SubmitArticle extends Component {
         // print the form values to the console
         console.log(values);
         var that = this;
-        that.setState({ sent: true })
         // Send rest request	
         // Changed https to http. Form was throwing network error
-        //axios request is handled in the php code
-        // axios.post('http://api2.audivity.com/user/url', {
-        //     url: values.url,
-        //     gender: values.gender,
-        //     age: values.age,
-        //     industry: values.industry
-        // })
-        //     .then(function (response) {
-        //         console.log(response);
-        //         //save ReqID
-        //         that.requestID = response.data.key;
-        //         //redirect to send_email view
-        //         that.state.url += that.requestID
-        //         that.setState({ redirect: true })
-
-
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
+        // axios request is handled in the php code
+        axios.post('https://api2.audivity.com/api/Podcasts/get_audio_sample', {
+            url: values.url,
+            gender: values.gender,
+            age: values.age,
+            industry: values.industry,
+            email: values.email,
+            company: values.company
+        })
+            .then(function (response) {
+                console.log(response);
+                // //save ReqID
+                // that.requestID = response.data.key;
+                // //redirect to send_email view
+                // that.state.url += that.requestID
+                // that.setState({ redirect: true })
+                that.setState({ sent: true })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
     }
 
@@ -79,7 +79,7 @@ class SubmitArticle extends Component {
                         <br />
                         <br />
                         <br />
-                        {this.state.sent ? <h1 className="display-5 mb-0 success"><i class="ion-clock"> </i> Thanks for your submission  <span>We're getting started on your fresh auditions!</span></h1> : null}
+                        {this.state.sent ? <h1 className="display-5 mb-0 success"><i class="ion-clock"> </i> Thanks for your submission<br/>  <span>We're getting started on your fresh auditions!</span></h1> : null}
 
                         {!this.state.sent ? <div>
                             <h1 className="display-5 mb-0">Hi, Welcome to <br />Audivity! <span>beta</span></h1>
